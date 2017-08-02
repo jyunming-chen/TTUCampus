@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title='TTU Campus'
+  body
+    - if (env && env.DEVELOPMENT)
+      script(src='jquery/jquery.min.js')
+      script(src='three/three.min.js')
+      script(src='dist/bundle.js')
+    - else
+      script(src='bundle.js')
