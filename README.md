@@ -1,6 +1,6 @@
 # TTU Campus
 
-[![build](https://img.shields.io/travis/jyunming-chen/ttu-campus/master.svg)](https://travis-ci.org/jyunming-chen/ttu-campus/builds)
+[![build](https://img.shields.io/travis/jyunming-chen/TTUCampus/master.svg)](https://travis-ci.org/jyunming-chen/TTUCampus/builds)
 
 ## Usage
 
