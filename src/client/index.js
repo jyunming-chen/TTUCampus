@@ -1,6 +1,6 @@
 import { Scene, WebGLRenderer, GridHelper, PerspectiveCamera } from 'three';
 import './utils/jquery-global';
-import 'bootstrap/dist/js/bootstrap';
+import 'bootstrap/dist/js/bootstrap'; // eslint-disable-line import/first
 import OrbitControls from './utils/OrbitControls';
 
 const $ = jQuery;
