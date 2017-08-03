@@ -21,6 +21,11 @@ app.use(
   express.static(`${__dirname}/../../node_modules/three/build`),
 );
 
+app.use(
+  '/bootstrap',
+  express.static(`${__dirname}/../../node_modules/bootstrap/dist`),
+);
+
 const port = process.env.npm_package_config_port;
 app.listen(port, () => {
   // eslint-disable-next-line no-console
