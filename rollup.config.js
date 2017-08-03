@@ -17,7 +17,7 @@ export default {
       babelrc: false,
     }),
   ],
-  external: process.env.DEVELOPMENT ? ['jquery', 'three'] : undefined,
+  external: process.env.DEVELOPMENT ? ['jquery', 'three', 'bootstrap'] : undefined,
   globals: process.env.DEVELOPMENT
     ? {
         jquery: 'jQuery',

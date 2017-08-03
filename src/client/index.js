@@ -1,7 +1,9 @@
 import { Scene, WebGLRenderer, GridHelper, PerspectiveCamera } from 'three';
-import OrbitControls from 'orbit-controls-es6';
+import './utils/jquery-global';
+import 'bootstrap/dist/js/bootstrap';
+import OrbitControls from './utils/OrbitControls';
 
-import $ from 'jquery';
+const $ = jQuery;
 
 /* eslint-disable no-use-before-define */
 
