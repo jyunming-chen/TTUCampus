@@ -9,57 +9,67 @@ html
       .container
         .navbar-header
           a.navbar-brand(href='#')='TTU Campus'
+          button.navbar-toggle.collapsed(type='button' data-toggle='collapse' data-target='#navbar-controls')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        .collapse.navbar-collapse#navbar-controls
     .container
-      .col-md-8
+      .col-sm-8.main-panel-container
         .panel.panel-default
           .panel-heading
             | Main Panel
-          .panel-body
-            | main
-      .col-md-4
+          .panel-body.main-container
+            canvas#canvas
+      .col-sm-4.side-panel-container
         .panel.panel-default
           .panel-heading
             | Control Panel
-          .panel-body
-            .form-group
-              label='From'
-              select.form-control#control-from
-                - for (const building of buildings)
-                  option(value=building.id)=building.name
-            .form-group
-              label='To'
-              select.form-control#control-to
-                - for (const building of buildings)
-                  option(value=building.id)=building.name
-            .form-group
-              label='Progress'
-              input.form-control.no-padding-horizontal#control-progress(type='range' min='0' max='1' step='0.01' value='0')
-            .form-group
-              label='Control'
-              .container-flush
-                .col-md-4.no-padding-left
-                  a.btn.btn-default.btn-block#control-play(href='#' role='button')='Play'
-                .col-md-4.no-padding-horizontal
-                  a.btn.btn-default.btn-block#control-pause(href='#' role='button')='Pause'
-                .col-md-4.no-padding-right
-                  a.btn.btn-default.btn-block#control-stop(href='#' role='button')='Stop'
-                .clearfix
-            .form-group
-              label='Speed'
-              select.form-control#control-speed
-                option(value='0.5')='0.5x'
-                option(value='1.0' selected)='1.0x'
-                option(value='1.5')='1.5x'
-                option(value='2.0')='2.0x'
-            .form-group
-              label='View'
-              select.form-control#control-view
-                option(value='god')='God'
-                option(value='3rd')='3rd'
+          .panel-body.side-container#side-controls
+            #controls
+              .form-group
+                label='From'
+                select.form-control#control-from
+                  - for (const building of buildings)
+                    option(value=building.id)=building.name
+              .form-group
+                label='To'
+                select.form-control#control-to
+                  - for (const building of buildings)
+                    option(value=building.id)=building.name
+              .form-group
+                label='Progress'
+                input.form-control.no-padding-horizontal#control-progress(type='range' min='0' max='1' step='0.01' value='0')
+              .form-group
+                label='Control'
+                .container-flush
+                  .col-xs-4.control-play-container.control-btn-container
+                    a.btn.btn-default.btn-block#control-play(href='#' role='button')
+                      span.glyphicon.glyphicon-play
+                  .col-xs-4.control-pause-container.control-btn-container
+                    a.btn.btn-default.btn-block#control-pause(href='#' role='button')
+                      span.glyphicon.glyphicon-pause
+                  .col-xs-4.control-stop-container.control-btn-container
+                    a.btn.btn-default.btn-block#control-stop(href='#' role='button')
+                      span.glyphicon.glyphicon-stop
+                  .clearfix
+              .form-group
+                label='Speed'
+                select.form-control#control-speed
+                  option(value='0.5')='0.5x'
+                  option(value='1.0' selected)='1.0x'
+                  option(value='1.5')='1.5x'
+                  option(value='2.0')='2.0x'
+              .form-group
+                label='View'
+                select.form-control#control-view
+                  option(value='god')='God'
+                  option(value='3rd')='3rd'
     - if (env && env.DEVELOPMENT)
       link(rel='stylesheet' href='bootstrap/css/bootstrap.min.css')
-      script(src='jquery/jquery.min.js')
-      script(src='three/three.min.js')
+      script(src='jquery/jquery.js')
+      script(src='bootstrap/js/bootstrap.min.js')
+      script(src='three/three.js')
       script(src='dist/bundle.js')
     - else
       link(rel='stylesheet' href='bundle.css')
@@ -67,14 +77,50 @@ html
     style.
       body {
         margin-top: 70px;
+        overflow: hidden;
       }
       .no-padding-horizontal {
         padding-left: 0 !important;
         padding-right: 0 !important;
       }
-      .no-padding-left {
-        padding-left: 0 !important;
+      .main-container {
+        padding: 0;
       }
-      .no-padding-right {
-        padding-right: 0 !important;
+      @media (min-width: 768px) {
+        .main-container {
+          height: calc(100vh - 135px);
+          overflow: hidden;
+        }
+        .side-container {
+          max-height: calc(100vh - 135px);
+          overflow-y: auto;
+        }
+        .control-play-container, .control-pause-container {
+          padding-left: 0 !important;
+        }
+        .control-stop-container, .control-pause-container {
+          padding-right: 0 !important;
+        }
+      }
+      @media (max-width: 768px) {
+        .main-container {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100vw;
+          height: calc(100vh - 50px);
+        }
+        .side-panel-container {
+          display: none;
+        }
+        .control-btn-container {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+        .control-play-container {
+          padding-right: 10px !important;
+        }
+        .control-stop-container {
+          padding-left: 10px !important;
+        }
       }
