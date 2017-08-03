@@ -1,11 +1,21 @@
 const express = require('express');
 const pug = require('pug');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 
 app.get('/', (request, response) => {
+  const constants = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, '../constants.json'), 'utf8'),
+  );
   response.send(
-    pug.renderFile(`${__dirname}/templates/index.pug`, { env: process.env }),
+    pug.renderFile(
+      `${__dirname}/templates/index.pug`,
+      Object.assign(constants, {
+        env: process.env,
+      }),
+    ),
   );
 });
 

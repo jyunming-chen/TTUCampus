@@ -1,13 +1,80 @@
 doctype html
 html
   head
+    meta(charset='utf8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
     title='TTU Campus'
   body
+    navbar.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          a.navbar-brand(href='#')='TTU Campus'
+    .container
+      .col-md-8
+        .panel.panel-default
+          .panel-heading
+            | Main Panel
+          .panel-body
+            | main
+      .col-md-4
+        .panel.panel-default
+          .panel-heading
+            | Control Panel
+          .panel-body
+            .form-group
+              label='From'
+              select.form-control#control-from
+                - for (const building of buildings)
+                  option(value=building.id)=building.name
+            .form-group
+              label='To'
+              select.form-control#control-to
+                - for (const building of buildings)
+                  option(value=building.id)=building.name
+            .form-group
+              label='Progress'
+              input.form-control.no-padding-horizontal#control-progress(type='range' min='0' max='1' step='0.01' value='0')
+            .form-group
+              label='Control'
+              .container-flush
+                .col-md-4.no-padding-left
+                  a.btn.btn-default.btn-block#control-play(href='#' role='button')='Play'
+                .col-md-4.no-padding-horizontal
+                  a.btn.btn-default.btn-block#control-pause(href='#' role='button')='Pause'
+                .col-md-4.no-padding-right
+                  a.btn.btn-default.btn-block#control-stop(href='#' role='button')='Stop'
+                .clearfix
+            .form-group
+              label='Speed'
+              select.form-control#control-speed
+                option(value='0.5')='0.5x'
+                option(value='1.0' selected)='1.0x'
+                option(value='1.5')='1.5x'
+                option(value='2.0')='2.0x'
+            .form-group
+              label='View'
+              select.form-control#control-view
+                option(value='god')='God'
+                option(value='3rd')='3rd'
     - if (env && env.DEVELOPMENT)
+      link(rel='stylesheet' href='bootstrap/css/bootstrap.min.css')
       script(src='jquery/jquery.min.js')
       script(src='three/three.min.js')
       script(src='dist/bundle.js')
-      link(rel='stylesheet' href='bootstrap/css/bootstrap.min.css')
     - else
-      script(src='bundle.js')
       link(rel='stylesheet' href='bundle.css')
+      script(src='bundle.js')
+    style.
+      body {
+        margin-top: 70px;
+      }
+      .no-padding-horizontal {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .no-padding-left {
+        padding-left: 0 !important;
+      }
+      .no-padding-right {
+        padding-right: 0 !important;
+      }
