@@ -12,7 +12,7 @@ npm run start
 
 ## Development
 
-- node >= 6
+- node >= 8
 
 ```sh
 # lint
