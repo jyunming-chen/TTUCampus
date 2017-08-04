@@ -1,14 +1,21 @@
-import { Scene, WebGLRenderer, GridHelper, PerspectiveCamera } from 'three';
-import './utils/jquery-global';
-import 'bootstrap/dist/js/bootstrap'; // eslint-disable-line import/first
-import OrbitControls from './utils/OrbitControls';
+// @ts-check
 
-const $ = jQuery;
+import { Scene, WebGLRenderer, PerspectiveCamera, Mesh } from 'three';
+import $ from './utils/jquery';
+import 'bootstrap/dist/js/bootstrap'; // eslint-disable-line import/first
+import OrbitControls from './three/OrbitControls';
+import BuildingAreaGeometry from './three/BuildingAreaGeometry';
+import constants from '../constants';
+import AvatarGeometry from './three/AvatarGeometry';
+import getConfigVector3 from './utils/getConfigVector3';
 
 /* eslint-disable no-use-before-define */
 
 const scene = new Scene();
+
+/** @type {any} HTMLCanvasElement */
 const canvas = document.getElementById('canvas');
+
 const renderer = new WebGLRenderer({ canvas });
 const camera = new PerspectiveCamera();
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -17,11 +24,23 @@ init();
 animate();
 
 function init() {
-  camera.position.set(0, 200, 100);
-  renderer.setClearColor(0x888888);
+  const avatar = new Mesh(new AvatarGeometry());
+  avatar.position.copy(getConfigVector3(constants.avatar.position));
+  scene.add(avatar);
 
-  const gridXZ = new GridHelper(100, 20, 0xff0000, 0xffffff);
-  scene.add(gridXZ);
+  constants.buildings.forEach(data => {
+    if (data.region) {
+      const geometry = new BuildingAreaGeometry(data);
+      const building = new Mesh(geometry);
+      building.rotation.x = Math.PI / -2;
+      scene.add(building);
+    }
+  });
+
+  camera.position.copy(getConfigVector3(constants.camera.position));
+  controls.target.copy(avatar.position);
+
+  renderer.setClearColor(0x888888);
 
   $(onWindowResize);
   $(window).resize(onWindowResize);

@@ -1,14 +1,14 @@
+// @ts-check
+
 const express = require('express');
 const pug = require('pug');
-const fs = require('fs');
-const path = require('path');
 
 const app = express();
 
 app.get('/', (request, response) => {
-  const constants = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, '../constants.json'), 'utf8'),
-  );
+  const id = '../constants';
+  delete require.cache[require.resolve(id)];
+  const constants = require(id); // eslint-disable-line
   response.send(
     pug.renderFile(
       `${__dirname}/templates/index.pug`,
