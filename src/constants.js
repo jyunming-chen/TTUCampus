@@ -2,7 +2,7 @@ module.exports = {
   scale: 0.75,
   avatar: {
     size: [5, 10, 5],
-    position: [-225, 0],
+    position: [-230, 5, 0],
   },
   camera: {
     position: [-225, 200, 100],
@@ -43,9 +43,14 @@ module.exports = {
     },
     { id: 'A9', name: 'A9' },
     {
-      id: 'unnamed',
-      name: 'unnamed',
+      id: 'zhi-sheng-ji-nian-guan',
+      name: 'Zhì Shēng Jì Niàn Guǎn',
       region: [[-125, 90], [-70, 90], [-70, 0], [-125, 0]],
+    },
+    {
+      id: 'front-door',
+      name: 'Front Door',
+      region: [[-240, 5], [-220, 5], [-220, 0], [-240, 0]],
     },
   ],
 };
