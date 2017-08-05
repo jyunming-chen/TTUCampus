@@ -6,7 +6,12 @@ module.exports = {
     position: [-230, 0],
   },
   camera: {
-    position: [-225, 200, 100],
+    god: {
+      position: [-230, 200, 100],
+    },
+    '3rd': {
+      position: [0, 50, -125],
+    },
   },
   // eslint-disable-next-line prettier/prettier
   places: /** @type {{ id: string, name: string, region?: [number, number][] }[]} */ ([

@@ -37,6 +37,9 @@ let playing = false;
 let speed = 0;
 let currentRatio = 0;
 
+/** @type {string} */
+let view;
+
 let isSideControls = true;
 const $controls = $('#controls');
 const $sideControls = $('#side-controls');
@@ -50,6 +53,7 @@ const $controlPlay = $('#control-play');
 const $controlPause = $('#control-pause');
 const $controlStop = $('#control-stop');
 const $controlSpeed = $('#control-speed');
+const $controlView = $('#control-view');
 
 /** @type {ConfigPath} */
 let currentPath;
@@ -59,6 +63,7 @@ animate();
 
 function init() {
   avatar.position.copy(getConfigVector3(constants.avatar.position));
+  avatar.rotation.y = Math.PI;
   scene.add(avatar);
 
   constants.places.forEach(data => {
@@ -71,26 +76,29 @@ function init() {
     }
   });
 
-  camera.position.copy(getConfigVector3(constants.camera.position));
+  camera.position.copy(getConfigVector3(constants.camera.god.position));
   controls.target.copy(avatar.position);
 
   renderer.setClearColor(0x888888);
 
-  $($controlPlay).click(onControlPlayClick);
-  $($controlPause).click(onControlPauseClick);
-  $($controlStop).click(onControlStopClick);
-  $($controlProgress).on('change input', onControlProgressChanged);
+  $controlPlay.click(onControlPlayClick);
+  $controlPause.click(onControlPauseClick);
+  $controlStop.click(onControlStopClick);
+  $controlProgress.on('change input', onControlProgressChanged);
 
-  $($controlSpeed).change(onControlSpeedChanged);
+  $controlSpeed.change(onControlSpeedChanged);
   onControlSpeedChanged();
 
-  $($controlFrom).change(onControlFromChanged);
-  $($controlTo).change(onControlToChanged);
+  $controlFrom.change(onControlFromChanged);
+  $controlTo.change(onControlToChanged);
 
   Object.keys(configPaths.map).forEach(fromId => {
     $controlFrom.append(`<option value="${fromId}">${fromId}</option>`);
   });
   $controlFrom.change();
+
+  $controlView.change(onControlViewChanged);
+  onControlViewChanged();
 
   $(onWindowResize);
   $(window).resize(onWindowResize);
@@ -105,8 +113,7 @@ function animate() {
       playing = false;
     }
   }
-
-  controls.update();
+  updateView();
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 }
@@ -117,7 +124,13 @@ function animate() {
 function moveAvatar(ratio) {
   currentRatio = ThreeMath.clamp(ratio, 0, 1);
   $controlProgress.val(currentRatio);
-  avatar.position.copy(currentPath.getPoint(currentRatio));
+
+  const newPosition = currentPath.getPoint(currentRatio);
+
+  if (!newPosition.equals(avatar.position)) {
+    avatar.lookAt(newPosition);
+    avatar.position.copy(newPosition);
+  }
 }
 
 /**
@@ -129,6 +142,17 @@ function updateAvatar(delta) {
 
   const newRatio = currentRatio + deltaRatio;
   moveAvatar(newRatio);
+}
+
+function updateView() {
+  if (view === 'god') {
+    controls.update();
+  } else {
+    camera.position.copy(
+      avatar.localToWorld(getConfigVector3(constants.camera['3rd'].position)),
+    );
+    camera.lookAt(avatar.position);
+  }
 }
 
 function onWindowResize() {
@@ -185,6 +209,22 @@ function onControlStopClick() {
 
 function onControlSpeedChanged() {
   speed = getSpeedValue();
+}
+
+function onControlViewChanged() {
+  const viewId = getViewId();
+  switch (viewId) {
+    case 'god':
+    case '3rd':
+      view = viewId;
+      break;
+    default:
+      throw new Error(`Unexpected viewId '${viewId}'`);
+  }
+}
+
+function getViewId() {
+  return /** @type {string} */ ($controlView.val()); // eslint-disable-line prettier/prettier
 }
 
 function getFromId() {
