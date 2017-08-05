@@ -14,7 +14,8 @@
     "build:js:prod": "npm run build:js && uglifyjs -c -m --output ./dist/bundle.js ./dist/bundle.js",
     "build:html": "pug -o ./dist -O ./src/constants.json ./src/server/templates/index.pug",
     "build:css": "cpy ./node_modules/bootstrap/dist/css/bootstrap.min.css ./dist --rename=bundle.css && node ./scripts/remap-font-url.js",
-    "build:font": "cpy ./node_modules/bootstrap/fonts/* ./dist/fonts"
+    "build:font": "cpy ./node_modules/bootstrap/fonts/* ./dist/fonts",
+    "typecheck": "tsc"
   },
   "devDependencies": {
     "@types/express": "4.0.36",
@@ -49,6 +50,7 @@
     "rollup-watch": "4.3.1",
     "three": "0.86.0",
     "three-orbit-controls": "82.1.0",
+    "typescript": "2.5.0-dev.20170804",
     "uglify-js": "3.0.27"
   },
   "engines": {

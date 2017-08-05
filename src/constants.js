@@ -1,13 +1,15 @@
 module.exports = {
   scale: 0.75,
+  speed: 1,
   avatar: {
     size: [5, 10, 5],
-    position: [-230, 5, 0],
+    position: [-230, 0],
   },
   camera: {
     position: [-225, 200, 100],
   },
-  places: [
+  // eslint-disable-next-line prettier/prettier
+  places: /** @type {{ id: string, name: string, region?: [number, number][] }[]} */ ([
     {
       id: 'A1',
       name: 'A1',
@@ -51,6 +53,21 @@ module.exports = {
       id: 'front-door',
       name: 'Front Door',
       region: [[-240, 5], [-220, 5], [-220, 0], [-240, 0]],
+    },
+    // eslint-disable-next-line prettier/prettier
+  ]),
+  paths: [
+    {
+      from: 'front-door',
+      to: 'A3',
+      points: [
+        [-230, 0],
+        [-230, 30],
+        [-130, 30],
+        [-130, 100],
+        [-55, 100],
+        [-55, 90],
+      ],
     },
   ],
 };

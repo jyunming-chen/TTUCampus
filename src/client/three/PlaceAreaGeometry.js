@@ -29,6 +29,9 @@ export default class PlaceAreaGeometry extends ShapeGeometry {
     return shape;
   }
 
+  /**
+   * @param {{ region: [number, number][] }} data
+   */
   constructor(data) {
     super(PlaceAreaGeometry.createShape(data.region));
     this.data = data;
