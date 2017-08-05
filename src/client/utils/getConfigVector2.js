@@ -6,7 +6,7 @@ import constants from '../../constants';
 /**
  * @param {[number, number]} xyArray
  */
-export default function getConfigVector2(xyArray) {
+export default function getConfigVector2(xyArray, scale = constants.scale) {
   const [x, y] = xyArray;
-  return new Vector2(x * constants.scale, y * constants.scale);
+  return new Vector2(x * scale, y * scale);
 }

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#getPoint(0.0) 1`] = `
+Vector3 {
+  "x": 0,
+  "y": 0,
+  "z": 0,
+}
+`;
+
+exports[`#getPoint(0.2) 1`] = `
+Vector3 {
+  "x": 0,
+  "y": 0,
+  "z": -0.8,
+}
+`;
+
+exports[`#getPoint(0.4) 1`] = `
+Vector3 {
+  "x": 0.6000000000000001,
+  "y": 0,
+  "z": -1,
+}
+`;
+
+exports[`#getPoint(0.5) 1`] = `
+Vector3 {
+  "x": 1,
+  "y": 0,
+  "z": -1,
+}
+`;
+
+exports[`#getPoint(0.8) 1`] = `
+Vector3 {
+  "x": 1.2000000000000002,
+  "y": 0,
+  "z": -2,
+}
+`;
+
+exports[`#getPoint(1.0) 1`] = `
+Vector3 {
+  "x": 2,
+  "y": 0,
+  "z": -2,
+}
+`;

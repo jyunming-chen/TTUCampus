@@ -1,6 +1,5 @@
 {
   "coverageReporters": ["lcov", "text-summary"],
-  "collectCoverageFrom": ["src/client/utils/*.js"],
   "coverageThreshold": {
     "global": {
       "branches": 100,

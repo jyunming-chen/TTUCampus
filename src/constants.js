@@ -1,6 +1,6 @@
 module.exports = {
   scale: 0.75,
-  speed: 1,
+  speed: 15,
   avatar: {
     size: [5, 10, 5],
     position: [-230, 0],
