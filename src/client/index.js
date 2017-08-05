@@ -4,7 +4,7 @@ import { Scene, WebGLRenderer, PerspectiveCamera, Mesh } from 'three';
 import $ from './utils/jquery';
 import 'bootstrap/dist/js/bootstrap'; // eslint-disable-line import/first
 import OrbitControls from './three/OrbitControls';
-import BuildingAreaGeometry from './three/BuildingAreaGeometry';
+import PlaceAreaGeometry from './three/PlaceAreaGeometry';
 import constants from '../constants';
 import AvatarGeometry from './three/AvatarGeometry';
 import getConfigVector3 from './utils/getConfigVector3';
@@ -28,12 +28,12 @@ function init() {
   avatar.position.copy(getConfigVector3(constants.avatar.position));
   scene.add(avatar);
 
-  constants.buildings.forEach(data => {
+  constants.places.forEach(data => {
     if (data.region) {
-      const geometry = new BuildingAreaGeometry(data);
-      const building = new Mesh(geometry);
-      building.rotation.x = Math.PI / -2;
-      scene.add(building);
+      const geometry = new PlaceAreaGeometry(data);
+      const place = new Mesh(geometry);
+      place.rotation.x = Math.PI / -2;
+      scene.add(place);
     }
   });
 

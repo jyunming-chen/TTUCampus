@@ -3,7 +3,7 @@
 import { ShapeGeometry, Shape } from 'three';
 import getConfigVector2 from '../utils/getConfigVector2';
 
-export default class BuildingAreaGeometry extends ShapeGeometry {
+export default class PlaceAreaGeometry extends ShapeGeometry {
   /**
    * @param {[number, number][]} region
    */
@@ -30,7 +30,7 @@ export default class BuildingAreaGeometry extends ShapeGeometry {
   }
 
   constructor(data) {
-    super(BuildingAreaGeometry.createShape(data.region));
+    super(PlaceAreaGeometry.createShape(data.region));
     this.data = data;
   }
 }

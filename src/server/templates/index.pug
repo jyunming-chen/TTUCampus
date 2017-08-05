@@ -30,13 +30,13 @@ html
               .form-group
                 label='From'
                 select.form-control#control-from
-                  - for (const building of buildings)
-                    option(value=building.id)=building.name
+                  - for (const place of places)
+                    option(value=place.id)=place.name
               .form-group
                 label='To'
                 select.form-control#control-to
-                  - for (const building of buildings)
-                    option(value=building.id)=building.name
+                  - for (const place of places)
+                    option(value=place.id)=place.name
               .form-group
                 label='Progress'
                 input.form-control.no-padding-horizontal#control-progress(type='range' min='0' max='1' step='0.01' value='0')

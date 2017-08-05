@@ -7,7 +7,7 @@ module.exports = {
   camera: {
     position: [-225, 200, 100],
   },
-  buildings: [
+  places: [
     {
       id: 'A1',
       name: 'A1',
