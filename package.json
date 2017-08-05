@@ -12,7 +12,7 @@
     "build:js": "rollup -c",
     "build:js:dev": "DEVELOPMENT=true npm run build:js -- -w",
     "build:js:prod": "npm run build:js && uglifyjs -c -m --output ./dist/bundle.js ./dist/bundle.js",
-    "build:html": "pug -o ./dist -O ./src/constants.json ./src/server/templates/index.pug",
+    "build:html": "pug -o ./dist -O ./src/constants.js ./src/server/templates/index.pug",
     "build:css": "cpy ./node_modules/bootstrap/dist/css/bootstrap.min.css ./dist --rename=bundle.css && node ./scripts/remap-font-url.js",
     "build:font": "cpy ./node_modules/bootstrap/fonts/* ./dist/fonts",
     "typecheck": "tsc"
