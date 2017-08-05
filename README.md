@@ -2,6 +2,8 @@
 
 [![build](https://img.shields.io/travis/jyunming-chen/TTUCampus/master.svg)](https://travis-ci.org/jyunming-chen/TTUCampus/builds)
 
+Live Demo - <https://rawgit.com/jyunming-chen/TTUCampus/master/dist/index.html>
+
 ## Usage
 
 ```sh
