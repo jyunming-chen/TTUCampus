@@ -1,5 +1,8 @@
 module.exports = {
   speed: 15,
+  defaults: {
+    from: 'front-door',
+  },
   floorPlan: {
     size: [791, 518],
     origin: [660, 340], // ↘︎

@@ -119,10 +119,11 @@ function init() {
   $controlFrom.change(onControlFromChanged);
   $controlTo.change(onControlToChanged);
 
+  const { from: presetFrom = constants.defaults.from } = query;
   Object.keys(configPaths.map).sort().forEach(fromId => {
     const $option = $(`<option value="${fromId}">${fromId}</option>`);
 
-    if (query.from === fromId) {
+    if (presetFrom === fromId) {
       $option.prop('selected', true);
     }
 
