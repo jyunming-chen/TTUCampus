@@ -12,7 +12,7 @@ import {
   Math as ThreeMath,
   DoubleSide,
 } from 'three';
-import $ from './utils/jquery';
+import $ from './libraries/jquery';
 import 'bootstrap/dist/js/bootstrap'; // eslint-disable-line import/first
 import OrbitControls from './three/OrbitControls';
 import PlaceAreaGeometry from './three/PlaceAreaGeometry';
