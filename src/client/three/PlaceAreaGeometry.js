@@ -1,9 +1,10 @@
 // @ts-check
 
-import { ShapeGeometry, Shape } from 'three';
+import { ExtrudeGeometry, Shape } from 'three';
 import getConfigVector2 from '../utils/getConfigVector2';
+import constants from '../../constants';
 
-export default class PlaceAreaGeometry extends ShapeGeometry {
+export default class PlaceAreaGeometry extends ExtrudeGeometry {
   /**
    * @param {[number, number][]} region
    */
@@ -30,10 +31,14 @@ export default class PlaceAreaGeometry extends ShapeGeometry {
   }
 
   /**
-   * @param {{ region: [number, number][] }} data
+   * @param {{ region: [number, number][], height?: number }} data
    */
   constructor(data) {
-    super(PlaceAreaGeometry.createShape(data.region));
+    const { height = 0 } = data;
+    super(PlaceAreaGeometry.createShape(data.region), {
+      amount: constants.scale * height,
+      bevelEnabled: false,
+    });
     this.data = data;
   }
 }

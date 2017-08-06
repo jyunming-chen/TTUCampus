@@ -22,12 +22,14 @@ module.exports = {
     {
       id: 'A1',
       name: 'A1',
+      height: 40,
       region: [[-250, 10], [-330, 10], [-330, 40], [-250, 40]],
     },
     { id: 'A2', name: 'A2' },
     {
       id: 'A3',
       name: 'A3',
+      height: 40,
       region: [[-60, 90], [0, 90], [0, 70], [-35, 70], [-35, 0], [-60, 0]],
     },
     { id: 'A4', name: 'A4' },
@@ -37,6 +39,7 @@ module.exports = {
     {
       id: 'A8',
       name: 'A8',
+      height: 30,
       region: [
         [-225, 35],
         [-225, 85],
@@ -56,6 +59,7 @@ module.exports = {
     {
       id: 'zhi-sheng-ji-nian-guan',
       name: 'Zhì Shēng Jì Niàn Guǎn',
+      height: 20,
       region: [[-125, 90], [-70, 90], [-70, 0], [-125, 0]],
     },
     {

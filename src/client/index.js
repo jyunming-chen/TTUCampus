@@ -10,6 +10,7 @@ import {
   MeshBasicMaterial,
   TextureLoader,
   Math as ThreeMath,
+  DoubleSide,
 } from 'three';
 import $ from './utils/jquery';
 import 'bootstrap/dist/js/bootstrap'; // eslint-disable-line import/first
@@ -76,7 +77,15 @@ function init() {
     if (data.region) {
       // eslint-disable-next-line prettier/prettier
       const geometry = new PlaceAreaGeometry(/** @type {(typeof data) & { region: any}} */ (data));
-      const place = new Mesh(geometry);
+      const place = new Mesh(
+        geometry,
+        new MeshBasicMaterial({
+          color: Math.random() * 0xffffff,
+          side: DoubleSide,
+          transparent: true,
+          opacity: 0.5,
+        }),
+      );
       place.rotation.x = Math.PI / -2;
       scene.add(place);
     }
