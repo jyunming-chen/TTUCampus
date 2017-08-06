@@ -21,11 +21,14 @@ import Avatar from './three/Avatar';
 import getConfigVector2 from './utils/getConfigVector2';
 import getConfigVector3 from './utils/getConfigVector3';
 import ConfigPaths from './utils/ConfigPaths';
+import getQuery from './utils/getQuery';
 
 // eslint-disable-next-line no-unused-vars
 import ConfigPath from './utils/ConfigPath';
 
 /* eslint-disable no-use-before-define */
+
+const query = getQuery(window.location.search);
 
 const scene = new Scene();
 const canvas = /** @type {HTMLCanvasElement} */ (document.getElementById('canvas')); // eslint-disable-line prettier/prettier
@@ -116,9 +119,16 @@ function init() {
   $controlFrom.change(onControlFromChanged);
   $controlTo.change(onControlToChanged);
 
-  Object.keys(configPaths.map).forEach(fromId => {
-    $controlFrom.append(`<option value="${fromId}">${fromId}</option>`);
+  Object.keys(configPaths.map).sort().forEach(fromId => {
+    const $option = $(`<option value="${fromId}">${fromId}</option>`);
+
+    if (query.from === fromId) {
+      $option.prop('selected', true);
+    }
+
+    $controlFrom.append($option);
   });
+
   $controlFrom.change();
 
   $controlView.change(onControlViewChanged);

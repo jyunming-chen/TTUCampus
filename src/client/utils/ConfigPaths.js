@@ -18,7 +18,10 @@ export default class ConfigPaths {
      * @type {Record<string, Record<string, ConfigPath>>}
      */
     this.map = {};
-    paths.forEach(path => this.setPath(path.from, path.to, path.points));
+    paths.forEach(path => {
+      this.setPath(path.from, path.to, path.points);
+      this.setPath(path.to, path.from, path.points.slice().reverse());
+    });
   }
 
   /**

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getQuery("") 1`] = `Object {}`;
+
+exports[`getQuery("?a&b=1") 1`] = `
+Object {
+  "a": undefined,
+  "b": "1",
+}
+`;
+
+exports[`getQuery("?a=1&b=2") 1`] = `
+Object {
+  "a": "1",
+  "b": "2",
+}
+`;

@@ -82,5 +82,10 @@ module.exports = {
         [-55, 90],
       ],
     },
+    {
+      from: 'front-door',
+      to: 'A1',
+      points: [[-230, 0], [-250, 25]],
+    },
   ],
 };
