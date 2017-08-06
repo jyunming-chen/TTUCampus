@@ -35,7 +35,16 @@ const camera = new PerspectiveCamera();
 const controls = new OrbitControls(camera, renderer.domElement);
 const clock = new Clock();
 
-const avatar = new Avatar(constants.avatar.body, constants.avatar.head);
+const textureLoader = new TextureLoader();
+textureLoader.crossOrigin = 'anonymous';
+
+const avatar = new Avatar(
+  constants.avatar.body,
+  Object.assign({}, constants.avatar.head, {
+    texture: textureLoader.load(constants.avatar.head.texture),
+  }),
+);
+
 const configPaths = new ConfigPaths(constants.paths);
 
 let playing = false;
@@ -134,9 +143,6 @@ function animate() {
 }
 
 function addFloorPlan() {
-  const textureLoader = new TextureLoader();
-  textureLoader.crossOrigin = 'anonymous';
-
   const size = getConfigVector2(constants.floorPlan.size);
   const origin = getConfigVector2(constants.floorPlan.origin);
   const floorPlan = new Mesh(
