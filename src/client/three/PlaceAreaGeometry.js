@@ -2,7 +2,6 @@
 
 import { ExtrudeGeometry, Shape } from 'three';
 import getConfigVector2 from '../utils/getConfigVector2';
-import constants from '../../constants';
 
 export default class PlaceAreaGeometry extends ExtrudeGeometry {
   /**
@@ -36,7 +35,7 @@ export default class PlaceAreaGeometry extends ExtrudeGeometry {
   constructor(data) {
     const { height = 0 } = data;
     super(PlaceAreaGeometry.createShape(data.region), {
-      amount: constants.scale * height,
+      amount: height,
       bevelEnabled: false,
     });
     this.data = data;

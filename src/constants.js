@@ -1,5 +1,4 @@
 module.exports = {
-  scale: 0.75,
   speed: 15,
   floorPlan: {
     size: [791, 518],

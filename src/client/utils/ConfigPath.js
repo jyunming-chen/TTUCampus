@@ -6,10 +6,9 @@ import getConfigVector3 from './getConfigVector3';
 export default class ConfigPath {
   /**
    * @param {number[][]} points
-   * @param {number=} scale
    */
-  constructor(points, scale) {
-    this.points = points.map(point => getConfigVector3(point, scale));
+  constructor(points) {
+    this.points = points.map(point => getConfigVector3(point));
 
     this.distance = 0;
 

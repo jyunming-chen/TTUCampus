@@ -12,14 +12,12 @@ import ConfigPath from './ConfigPath';
 export default class ConfigPaths {
   /**
    * @param {Path[]} paths
-   * @param {number=} scale
    */
-  constructor(paths, scale) {
+  constructor(paths) {
     /**
      * @type {Record<string, Record<string, ConfigPath>>}
      */
     this.map = {};
-    this.scale = scale;
     paths.forEach(path => this.setPath(path.from, path.to, path.points));
   }
 
@@ -32,7 +30,7 @@ export default class ConfigPaths {
     if (!this.map[from]) {
       this.map[from] = {};
     }
-    this.map[from][to] = new ConfigPath(points, this.scale);
+    this.map[from][to] = new ConfigPath(points);
   }
 
   /**

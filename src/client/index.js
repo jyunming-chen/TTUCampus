@@ -175,7 +175,7 @@ function moveAvatar(ratio) {
  * @param {number} delta second
  */
 function updateAvatar(delta) {
-  const deltaDistance = speed * constants.speed * constants.scale * delta;
+  const deltaDistance = speed * constants.speed * delta;
   const deltaRatio = deltaDistance / currentPath.distance;
 
   const newRatio = currentRatio + deltaRatio;
