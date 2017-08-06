@@ -21,7 +21,7 @@ module.exports = {
     },
   },
   // eslint-disable-next-line prettier/prettier
-  places: /** @type {{ id: string, name: string, region?: [number, number][] }[]} */ ([
+  places: /** @type {{ id: string, name: string, region?: [number, number][], height?: number }[]} */ ([
     {
       id: 'A1',
       name: 'A1',
@@ -36,7 +36,12 @@ module.exports = {
       region: [[-60, 90], [0, 90], [0, 70], [-35, 70], [-35, 0], [-60, 0]],
     },
     { id: 'A4', name: 'A4' },
-    { id: 'A5', name: 'A5' },
+    {
+      id: 'A5',
+      name: 'A5',
+      height: 40,
+      region: [[-305, 55], [-320, 160], [-365, 155], [-350, 50]],
+    },
     { id: 'A6', name: 'A6' },
     { id: 'A7', name: 'A7' },
     {
@@ -80,6 +85,9 @@ module.exports = {
     { id: 'unnamed-4', name: 'Unnamed 4', position: [-55, 100] },
     { id: 'A3-front-door', name: 'A3 Front Door', position: [-55, 90] },
     { id: 'A1-front-door', name: 'A1 Front Door', position: [-250, 25] },
+    { id: 'unnamed-5', name: 'Unnamed 5', position: [-240, 50] },
+    { id: 'unnamed-6', name: 'Unnamed 6', position: [-270, 70] },
+    { id: 'A5-front-door', name: 'A5 Front Door', position: [-305, 65] },
   ],
   paths: [
     {
@@ -94,10 +102,15 @@ module.exports = {
         'A3-front-door',
       ],
     },
+    // {
+    //   from: 'ttu-front-door',
+    //   to: 'A1',
+    //   points: ['ttu-front-door', 'A1-front-door'],
+    // },
     {
       from: 'ttu-front-door',
-      to: 'A1',
-      points: ['ttu-front-door', 'A1-front-door'],
+      to: 'A5',
+      points: ['ttu-front-door', 'unnamed-5', 'unnamed-6', 'A5-front-door'],
     },
   ],
 };
