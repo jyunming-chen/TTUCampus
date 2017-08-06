@@ -36,6 +36,8 @@ app.use(
   express.static(`${__dirname}/../../node_modules/bootstrap/dist`),
 );
 
+app.use('/resources', express.static(`${__dirname}/resources`));
+
 const port = process.env.npm_package_config_port;
 app.listen(port, () => {
   // eslint-disable-next-line no-console

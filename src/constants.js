@@ -1,6 +1,10 @@
 module.exports = {
   scale: 0.75,
   speed: 15,
+  floorPlan: {
+    size: [791, 518],
+    origin: [660, 340], // ↘︎
+  },
   avatar: {
     size: [5, 10, 5],
     position: [-230, 0],

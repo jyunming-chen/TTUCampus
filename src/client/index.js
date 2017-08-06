@@ -6,6 +6,9 @@ import {
   PerspectiveCamera,
   Mesh,
   Clock,
+  PlaneGeometry,
+  MeshBasicMaterial,
+  TextureLoader,
   Math as ThreeMath,
 } from 'three';
 import $ from './utils/jquery';
@@ -14,6 +17,7 @@ import OrbitControls from './three/OrbitControls';
 import PlaceAreaGeometry from './three/PlaceAreaGeometry';
 import constants from '../constants';
 import AvatarGeometry from './three/AvatarGeometry';
+import getConfigVector2 from './utils/getConfigVector2';
 import getConfigVector3 from './utils/getConfigVector3';
 import getConfigPaths from './utils/getConfigPaths';
 
@@ -62,6 +66,8 @@ init();
 animate();
 
 function init() {
+  addFloorPlan();
+
   avatar.position.copy(getConfigVector3(constants.avatar.position));
   avatar.rotation.y = Math.PI;
   scene.add(avatar);
@@ -116,6 +122,26 @@ function animate() {
   updateView();
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
+}
+
+function addFloorPlan() {
+  const size = getConfigVector2(constants.floorPlan.size);
+  const origin = getConfigVector2(constants.floorPlan.origin);
+  const floorPlan = new Mesh(
+    new PlaneGeometry(size.x, size.y).translate(
+      size.x / +2 - origin.x,
+      size.y / -2 + origin.y,
+      0,
+    ),
+    new MeshBasicMaterial({
+      map: new TextureLoader().load('./resources/floor-plan.png'),
+      polygonOffset: true,
+      polygonOffsetFactor: 1.0,
+      polygonOffsetUnits: 4.0,
+    }),
+  );
+  floorPlan.rotation.x = Math.PI / -2;
+  scene.add(floorPlan);
 }
 
 /**
