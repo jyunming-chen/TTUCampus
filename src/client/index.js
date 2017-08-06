@@ -17,10 +17,10 @@ import 'bootstrap/dist/js/bootstrap'; // eslint-disable-line import/first
 import OrbitControls from './three/OrbitControls';
 import PlaceAreaGeometry from './three/PlaceAreaGeometry';
 import constants from '../constants';
-import AvatarGeometry from './three/AvatarGeometry';
+import Avatar from './three/Avatar';
 import getConfigVector2 from './utils/getConfigVector2';
 import getConfigVector3 from './utils/getConfigVector3';
-import getConfigPaths from './utils/getConfigPaths';
+import ConfigPaths from './utils/ConfigPaths';
 
 // eslint-disable-next-line no-unused-vars
 import ConfigPath from './utils/ConfigPath';
@@ -35,8 +35,8 @@ const camera = new PerspectiveCamera();
 const controls = new OrbitControls(camera, renderer.domElement);
 const clock = new Clock();
 
-const avatar = new Mesh(new AvatarGeometry());
-const configPaths = getConfigPaths();
+const avatar = new Avatar(constants.avatar.body, constants.avatar.head);
+const configPaths = new ConfigPaths(constants.paths);
 
 let playing = false;
 let speed = 0;

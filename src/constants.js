@@ -5,7 +5,8 @@ module.exports = {
     origin: [660, 340], // ↘︎
   },
   avatar: {
-    size: [5, 10, 5],
+    body: { width: 5, height: 10, depth: 5 },
+    head: { radius: 3, offset: 9 },
     position: [-230, 0],
   },
   camera: {
