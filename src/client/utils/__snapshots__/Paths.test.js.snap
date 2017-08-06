@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#getPath() 1`] = `
+Path {
+  "distance": 2.8284271247461903,
+  "distances": Array [
+    0,
+    1.4142135623730951,
+    2.8284271247461903,
+  ],
+  "points": Array [
+    Vector3 {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+    },
+    Vector3 {
+      "x": 1,
+      "y": 0,
+      "z": -1,
+    },
+    Vector3 {
+      "x": 2,
+      "y": 0,
+      "z": -2,
+    },
+  ],
+}
+`;
+
+exports[`new Paths(configPaths) 1`] = `
+Paths {
+  "map": Object {
+    "A": Object {
+      "B": Path {
+        "distance": 2.8284271247461903,
+        "distances": Array [
+          0,
+          1.4142135623730951,
+          2.8284271247461903,
+        ],
+        "points": Array [
+          Vector3 {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+          },
+          Vector3 {
+            "x": 1,
+            "y": 0,
+            "z": -1,
+          },
+          Vector3 {
+            "x": 2,
+            "y": 0,
+            "z": -2,
+          },
+        ],
+      },
+      "C": Path {
+        "distance": 5.06449510224598,
+        "distances": Array [
+          0,
+          2.23606797749979,
+          5.06449510224598,
+        ],
+        "points": Array [
+          Vector3 {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+          },
+          Vector3 {
+            "x": -1,
+            "y": 0,
+            "z": 2,
+          },
+          Vector3 {
+            "x": -3,
+            "y": 0,
+            "z": 4,
+          },
+        ],
+      },
+    },
+    "B": Object {
+      "A": Path {
+        "distance": 2.8284271247461903,
+        "distances": Array [
+          0,
+          1.4142135623730951,
+          2.8284271247461903,
+        ],
+        "points": Array [
+          Vector3 {
+            "x": 2,
+            "y": 0,
+            "z": -2,
+          },
+          Vector3 {
+            "x": 1,
+            "y": 0,
+            "z": -1,
+          },
+          Vector3 {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+          },
+        ],
+      },
+    },
+    "C": Object {
+      "A": Path {
+        "distance": 5.06449510224598,
+        "distances": Array [
+          0,
+          2.8284271247461903,
+          5.06449510224598,
+        ],
+        "points": Array [
+          Vector3 {
+            "x": -3,
+            "y": 0,
+            "z": 4,
+          },
+          Vector3 {
+            "x": -1,
+            "y": 0,
+            "z": 2,
+          },
+          Vector3 {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+          },
+        ],
+      },
+    },
+  },
+}
+`;

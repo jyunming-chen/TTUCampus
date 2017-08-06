@@ -59,5 +59,16 @@
   },
   "config": {
     "port": 10086
+  },
+  "jest": {
+    "collectCoverageFrom": ["src/client/utils/*.js"],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   }
 }

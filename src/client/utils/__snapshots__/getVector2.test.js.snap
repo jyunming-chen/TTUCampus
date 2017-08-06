@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getVector2([1, 2]) 1`] = `
+Vector2 {
+  "x": 1,
+  "y": 2,
+}
+`;
