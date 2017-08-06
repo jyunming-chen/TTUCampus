@@ -29,7 +29,7 @@ Path {
 `;
 
 exports[`new Paths(configPaths) 1`] = `
-Paths {
+Guide {
   "map": Object {
     "A": Object {
       "B": Path {
@@ -136,6 +136,68 @@ Paths {
           },
         ],
       },
+    },
+  },
+  "paths": Array [
+    Object {
+      "from": "A",
+      "points": Array [
+        "a",
+        "b",
+        "c",
+      ],
+      "to": "B",
+    },
+    Object {
+      "from": "A",
+      "points": Array [
+        "a",
+        "d",
+        "e",
+      ],
+      "to": "C",
+    },
+  ],
+  "points": Object {
+    "a": Object {
+      "id": "a",
+      "name": "a",
+      "position": Array [
+        0,
+        0,
+      ],
+    },
+    "b": Object {
+      "id": "b",
+      "name": "b",
+      "position": Array [
+        1,
+        1,
+      ],
+    },
+    "c": Object {
+      "id": "c",
+      "name": "c",
+      "position": Array [
+        2,
+        2,
+      ],
+    },
+    "d": Object {
+      "id": "d",
+      "name": "d",
+      "position": Array [
+        -1,
+        -2,
+      ],
+    },
+    "e": Object {
+      "id": "e",
+      "name": "e",
+      "position": Array [
+        -3,
+        -4,
+      ],
     },
   },
 }

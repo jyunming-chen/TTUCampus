@@ -20,7 +20,7 @@ import constants from '../constants';
 import Avatar from './three/Avatar';
 import getVector2 from './utils/getVector2';
 import getVector3 from './utils/getVector3';
-import Paths from './utils/Paths';
+import Guide from './utils/Guide';
 import getQuery from './utils/getQuery';
 
 // eslint-disable-next-line no-unused-vars
@@ -48,7 +48,7 @@ const avatar = new Avatar(
   }),
 );
 
-const configPaths = new Paths(constants.paths);
+const guide = new Guide(constants.paths, constants.points);
 
 let playing = false;
 let speed = 0;
@@ -120,7 +120,7 @@ function init() {
   $controlTo.change(onControlToChanged);
 
   const { from: presetFrom = constants.defaults.from } = query;
-  Object.keys(configPaths.map).sort().forEach(fromId => {
+  Object.keys(guide.map).sort().forEach(fromId => {
     const $option = $(`<option value="${fromId}">${fromId}</option>`);
 
     if (presetFrom === fromId) {
@@ -231,14 +231,14 @@ function onWindowResize() {
 
 function onControlFromChanged() {
   $controlTo.empty();
-  Object.keys(configPaths.map[getFromId()]).forEach(toId => {
+  Object.keys(guide.map[getFromId()]).forEach(toId => {
     $controlTo.append(`<option value="${toId}">${toId}</option>`);
   });
   $controlTo.change();
 }
 
 function onControlToChanged() {
-  const path = configPaths.getPath(getFromId(), getToId());
+  const path = guide.getPath(getFromId(), getToId());
   if (path) {
     currentPath = path;
     onControlStopClick();

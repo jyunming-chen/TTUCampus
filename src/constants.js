@@ -1,7 +1,7 @@
 module.exports = {
   speed: 15,
   defaults: {
-    from: 'front-door',
+    from: 'ttu-front-door',
   },
   floorPlan: {
     size: [791, 518],
@@ -66,29 +66,38 @@ module.exports = {
       region: [[-125, 90], [-70, 90], [-70, 0], [-125, 0]],
     },
     {
-      id: 'front-door',
-      name: 'Front Door',
+      id: 'ttu-front-door',
+      name: 'TTU Front Door',
       region: [[-240, 5], [-220, 5], [-220, 0], [-240, 0]],
     },
     // eslint-disable-next-line prettier/prettier
   ]),
+  points: [
+    { id: 'ttu-front-door', name: 'TTU Front Door', position: [-230, 0] },
+    { id: 'unnamed-1', name: 'Unnamed 1', position: [-230, 30] },
+    { id: 'unnamed-2', name: 'Unnamed 2', position: [-130, 30] },
+    { id: 'unnamed-3', name: 'Unnamed 3', position: [-130, 100] },
+    { id: 'unnamed-4', name: 'Unnamed 4', position: [-55, 100] },
+    { id: 'A3-front-door', name: 'A3 Front Door', position: [-55, 90] },
+    { id: 'A1-front-door', name: 'A1 Front Door', position: [-250, 25] },
+  ],
   paths: [
     {
-      from: 'front-door',
+      from: 'ttu-front-door',
       to: 'A3',
       points: [
-        [-230, 0],
-        [-230, 30],
-        [-130, 30],
-        [-130, 100],
-        [-55, 100],
-        [-55, 90],
+        'ttu-front-door',
+        'unnamed-1',
+        'unnamed-2',
+        'unnamed-3',
+        'unnamed-4',
+        'A3-front-door',
       ],
     },
     {
-      from: 'front-door',
+      from: 'ttu-front-door',
       to: 'A1',
-      points: [[-230, 0], [-250, 25]],
+      points: ['ttu-front-door', 'A1-front-door'],
     },
   ],
 };
