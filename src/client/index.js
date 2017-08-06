@@ -125,6 +125,9 @@ function animate() {
 }
 
 function addFloorPlan() {
+  const textureLoader = new TextureLoader();
+  textureLoader.crossOrigin = 'anonymous';
+
   const size = getConfigVector2(constants.floorPlan.size);
   const origin = getConfigVector2(constants.floorPlan.origin);
   const floorPlan = new Mesh(
@@ -134,7 +137,7 @@ function addFloorPlan() {
       0,
     ),
     new MeshBasicMaterial({
-      map: new TextureLoader().load('./resources/floor-plan.png'),
+      map: textureLoader.load('./resources/floor-plan.png'),
       polygonOffset: true,
       polygonOffsetFactor: 1.0,
       polygonOffsetUnits: 4.0,
