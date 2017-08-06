@@ -1,8 +1,8 @@
 // @ts-check
 
-import ConfigPath from './ConfigPath';
+import Path from './Path';
 
-const path = new ConfigPath([[0, 0], [0, 1], [1, 1], [1, 2], [2, 2]]);
+const path = new Path([[0, 0], [0, 1], [1, 1], [1, 2], [2, 2]]);
 
 test('#distance', () => {
   expect(path.distance).toBeCloseTo(4);

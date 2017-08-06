@@ -18,13 +18,13 @@ import OrbitControls from './three/OrbitControls';
 import PlaceAreaGeometry from './three/PlaceAreaGeometry';
 import constants from '../constants';
 import Avatar from './three/Avatar';
-import getConfigVector2 from './utils/getConfigVector2';
-import getConfigVector3 from './utils/getConfigVector3';
-import ConfigPaths from './utils/ConfigPaths';
+import getVector2 from './utils/getVector2';
+import getVector3 from './utils/getVector3';
+import Paths from './utils/Paths';
 import getQuery from './utils/getQuery';
 
 // eslint-disable-next-line no-unused-vars
-import ConfigPath from './utils/ConfigPath';
+import Path from './utils/Path';
 
 /* eslint-disable no-use-before-define */
 
@@ -48,7 +48,7 @@ const avatar = new Avatar(
   }),
 );
 
-const configPaths = new ConfigPaths(constants.paths);
+const configPaths = new Paths(constants.paths);
 
 let playing = false;
 let speed = 0;
@@ -72,7 +72,7 @@ const $controlStop = $('#control-stop');
 const $controlSpeed = $('#control-speed');
 const $controlView = $('#control-view');
 
-/** @type {ConfigPath} */
+/** @type {Path} */
 let currentPath;
 
 init();
@@ -81,7 +81,7 @@ animate();
 function init() {
   addFloorPlan();
 
-  avatar.position.copy(getConfigVector3(constants.avatar.position));
+  avatar.position.copy(getVector3(constants.avatar.position));
   avatar.rotation.y = Math.PI;
   scene.add(avatar);
 
@@ -103,7 +103,7 @@ function init() {
     }
   });
 
-  camera.position.copy(getConfigVector3(constants.camera.god.position));
+  camera.position.copy(getVector3(constants.camera.god.position));
   controls.target.copy(avatar.position);
 
   renderer.setClearColor(0x888888);
@@ -153,8 +153,8 @@ function animate() {
 }
 
 function addFloorPlan() {
-  const size = getConfigVector2(constants.floorPlan.size);
-  const origin = getConfigVector2(constants.floorPlan.origin);
+  const size = getVector2(constants.floorPlan.size);
+  const origin = getVector2(constants.floorPlan.origin);
   const floorPlan = new Mesh(
     new PlaneGeometry(size.x, size.y).translate(
       size.x / +2 - origin.x,
@@ -203,7 +203,7 @@ function updateView() {
     controls.update();
   } else {
     camera.position.copy(
-      avatar.localToWorld(getConfigVector3(constants.camera['3rd'].position)),
+      avatar.localToWorld(getVector3(constants.camera['3rd'].position)),
     );
     camera.lookAt(avatar.position);
   }

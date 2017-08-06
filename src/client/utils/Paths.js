@@ -1,21 +1,21 @@
 // @ts-check
 
-import ConfigPath from './ConfigPath';
+import Path from './Path';
 
 /**
- * @typedef {Object} Path
+ * @typedef {Object} ConfigPath
  * @prop {string} from
  * @prop {string} to
  * @prop {number[][]} points
  */
 
-export default class ConfigPaths {
+export default class Paths {
   /**
-   * @param {Path[]} paths
+   * @param {ConfigPath[]} paths
    */
   constructor(paths) {
     /**
-     * @type {Record<string, Record<string, ConfigPath>>}
+     * @type {Record<string, Record<string, Path>>}
      */
     this.map = {};
     paths.forEach(path => {
@@ -33,7 +33,7 @@ export default class ConfigPaths {
     if (!this.map[from]) {
       this.map[from] = {};
     }
-    this.map[from][to] = new ConfigPath(points);
+    this.map[from][to] = new Path(points);
   }
 
   /**

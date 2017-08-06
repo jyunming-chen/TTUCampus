@@ -1,14 +1,14 @@
 // @ts-check
 
 import { Vector3 } from 'three';
-import getConfigVector3 from './getConfigVector3';
+import getVector3 from './getVector3';
 
-export default class ConfigPath {
+export default class Path {
   /**
    * @param {number[][]} points
    */
   constructor(points) {
-    this.points = points.map(point => getConfigVector3(point));
+    this.points = points.map(point => getVector3(point));
 
     this.distance = 0;
 

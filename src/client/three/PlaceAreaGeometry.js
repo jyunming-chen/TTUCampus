@@ -1,7 +1,7 @@
 // @ts-check
 
 import { ExtrudeGeometry, Shape } from 'three';
-import getConfigVector2 from '../utils/getConfigVector2';
+import getVector2 from '../utils/getVector2';
 
 export default class PlaceAreaGeometry extends ExtrudeGeometry {
   /**
@@ -13,7 +13,7 @@ export default class PlaceAreaGeometry extends ExtrudeGeometry {
     /** @type {number} */ let initX;
     /** @type {number} */ let initY;
     region.forEach((point, index) => {
-      const { x, y } = getConfigVector2(point);
+      const { x, y } = getVector2(point);
       if (index === 0) {
         shape.moveTo(x, y);
         initX = x;
